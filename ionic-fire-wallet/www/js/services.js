@@ -47,4 +47,20 @@ angular.module('starter.services', [])
       return null;
     }
   };
+})
+.factory('fireBaseData', function($firebase) {
+    var ref = new Firebase("https://radiant-torch-3371.firebaseio.com/"),
+        refExpenses = new Firebase("https://radiant-torch-3371.firebaseio.com/expenses"),
+        refRoomMates = new Firebase("https://radiant-torch-3371.firebaseio.com/room-mates");
+    return {
+        ref: function() {
+            return ref;
+        },
+        refExpenses: function() {
+            return refExpenses;
+        },
+        refRoomMates: function() {
+            return refRoomMates;
+        }
+    }
 });
