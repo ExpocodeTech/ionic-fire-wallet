@@ -79,8 +79,6 @@ angular.module('starter.controllers', [])
       },function(error, authData) {
           if (error === null) {
               console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
-              var r = $firebase(fireBaseData.refRoomMates()).$asArray();
-              r.$add(["javiexpo2003@gmail.com","gabita2882@gmail.com"]);
               $scope.user = fireBaseData.ref().getAuth();
               $scope.showLoginForm = false;
               $scope.$apply();
