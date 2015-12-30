@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, fireBaseData, $firebase) {
+    $scope.shouldShowDelete = false;
     //Obtenemos la lista de gastos registrado en firebase
     $scope.expenses = $firebase(fireBaseData.refExpenses()).$asArray();
     $scope.user = fireBaseData.ref().getAuth();
@@ -13,6 +14,11 @@ angular.module('starter.controllers', [])
         });
         $scope.label = "";
         $scope.cost = 0;
+    };
+
+    $scope.removeExpense = function(expense) {
+      console.log("removeExpense " + expense);
+      $scope.expenses.$remove(expense);
     };
 
     $scope.getTotal = function() {

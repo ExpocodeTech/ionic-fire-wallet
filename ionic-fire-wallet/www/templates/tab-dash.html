@@ -1,9 +1,13 @@
 <ion-view title="Mis Gastos">  
   <ion-content>
-    <ion-list>               
+  <ion-toggle ng-model="shouldShowDelete">
+      Show Delete?
+  </ion-toggle>
+      <ion-list show-delete="shouldShowDelete">               
       <ion-item ng-repeat="expense in expenses|filter:user.password.email"
                 type="item-text-wrap"> {{expense.label}}
         <span class="badge badge-balanced">{{expense.cost}}</span>
+        <ion-delete-button class="ion-minus-circled" ng-click="removeExpense(expense)"></ion-delete-button>
       </ion-item>             
     </ion-list>            
     <div class="card assertive">                   
